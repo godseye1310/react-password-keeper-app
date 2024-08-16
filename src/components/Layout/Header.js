@@ -1,15 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
+import styles from "./Header.module.css";
 import Button from "../UI/Button";
 import Search from "./Search";
+import globalContext from "../../store/global-context";
 
-const Header = () => {
+const Header = (props) => {
+	const headerCtx = useContext(globalContext);
+	const total = headerCtx.passwords.length;
 	return (
-		<div>
+		<div className={styles.header}>
 			<div>
 				<h1>Passwork Keeper</h1>
-				<h3>Total Password : 3</h3>
+				<h3>Total Password : {total}</h3>
 			</div>
-			<Button>Add New Password</Button>
+			<Button onClick={props.onDisplayForm}>Add New Password</Button>
 			<Search />
 		</div>
 	);

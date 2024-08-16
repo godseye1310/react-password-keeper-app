@@ -1,12 +1,13 @@
 import React from "react";
 
 const globalContext = React.createContext({
-	Item: [],
-	cart: [],
-	addItem: (ItemList) => {},
-	addCart: (cartList) => {},
-	removeCart: (id) => {},
-	amount: 0,
+	passwords: [],
+	addPassword: (ItemList) => {},
+	deletePassword: (id) => {},
+	editPassword: (id) => {},
+	searchpassword: (search) => {},
+	filteredList: [],
+	total: 0,
 });
 
 export default globalContext;
