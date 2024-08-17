@@ -7,31 +7,9 @@ const ContextProvidder = (props) => {
 
 	const [passwordList, setPasswordList] = useState([]);
 
-	const [filteredPasswordList, setFilteredPasswordList] = useState([]);
-
 	const addPasswordHandler = (list) => {
 		setPasswordList((prevList) => {
 			return [...prevList, list];
-		});
-	};
-
-	const searchHandler = (search) => {
-		// console.log(search);
-		setFilteredPasswordList(() => {
-			// console.log(passwordList);
-
-			let mysearch;
-			if (search.trim().length > 0) {
-				mysearch = passwordList.filter((element) => {
-					if (element.title.toLowerCase().indexOf(search.toLowerCase()) !== -1) {
-						return element.title;
-					}
-					return 0;
-				});
-			} else {
-				mysearch = passwordList;
-			}
-			return mysearch;
 		});
 	};
 
@@ -44,7 +22,6 @@ const ContextProvidder = (props) => {
 			}
 		});
 	};
-
 	const editPasswordHandler = (edit) => {
 		setPasswordList((prevList) => {
 			for (let pdata of prevList) {
@@ -52,11 +29,15 @@ const ContextProvidder = (props) => {
 					// console.log(edit);
 					setTitle(edit.title);
 					setPasscode(edit.password);
-
 					return prevList.filter((pdata) => pdata.id !== edit.id);
 				}
 			}
 		});
+	};
+
+	const [searchText, setSearchText] = useState("");
+	const searchHandler = (search) => {
+		setSearchText(search);
 	};
 
 	const globalCtx = {
@@ -65,8 +46,8 @@ const ContextProvidder = (props) => {
 		deletePassword: deletePasswordHandler,
 		editPassword: editPasswordHandler,
 
-		searchpassword: searchHandler,
-		filteredList: filteredPasswordList,
+		searchPassword: searchHandler,
+		searchKey: searchText,
 
 		setData: {
 			mytitle,
@@ -74,7 +55,6 @@ const ContextProvidder = (props) => {
 			passcode,
 			setPasscode,
 		},
-		total: 0,
 	};
 
 	return (

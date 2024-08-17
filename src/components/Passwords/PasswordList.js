@@ -6,7 +6,7 @@ import globalContext from "../../store/global-context";
 
 const PasswordList = (props) => {
 	const listCtx = useContext(globalContext);
-	// console.log(listCtx.passwords);
+	// console.log(listCtx.passwordList);
 	// console.log(listCtx.filteredList);
 
 	const deleteHandler = (id) => {
@@ -18,7 +18,17 @@ const PasswordList = (props) => {
 		props.onShowForm();
 	};
 
-	const listData = listCtx.passwordList.map((data) => {
+	const { searchKey } = listCtx;
+	let displayedList;
+	if (searchKey.trim().length > 0) {
+		displayedList = listCtx.passwordList.filter((element) => {
+			return element.title.toLowerCase().indexOf(searchKey.toLowerCase()) !== -1;
+		});
+	} else {
+		displayedList = listCtx.passwordList;
+	}
+
+	const listData = displayedList.map((data) => {
 		return (
 			<PaswordItem
 				key={data.id}
