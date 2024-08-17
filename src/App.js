@@ -17,6 +17,7 @@ function App() {
 	return (
 		<ContextProvidder>
 			<Header onDisplayForm={formDisplayHandler} />
+
 			{formDisplay && <AddForm onCloseForm={formDisplayCloser} />}
 
 			<PasswordList onShowForm={formDisplayHandler} />

@@ -6,9 +6,9 @@ const PaswordItem = (props) => {
 		props.onDelete(props.id);
 	};
 
-	const handleEdit = () => {
-		props.onEdit(props.id);
-	};
+	// const handleEdit = () => {
+	// 	props.onEdit(props.id);
+	// };
 	return (
 		<>
 			<li>
@@ -19,7 +19,7 @@ const PaswordItem = (props) => {
 				</div>
 				<div>
 					<Button onClick={handleDelete}>Delete</Button>
-					<Button onClick={handleEdit}>Edit</Button>
+					<Button onClick={props.onEdit}>Edit</Button>
 				</div>
 			</li>
 			<hr />

@@ -13,12 +13,12 @@ const PasswordList = (props) => {
 		listCtx.deletePassword(id);
 	};
 
-	const editHandler = (id) => {
-		listCtx.editPassword(id);
+	const editHandler = (edit) => {
+		listCtx.editPassword(edit);
 		props.onShowForm();
 	};
 
-	const listData = listCtx.passwords.map((data) => {
+	const listData = listCtx.passwordList.map((data) => {
 		return (
 			<PaswordItem
 				key={data.id}
@@ -26,7 +26,7 @@ const PasswordList = (props) => {
 				title={data.title}
 				password={data.password}
 				onDelete={deleteHandler}
-				onEdit={editHandler}
+				onEdit={editHandler.bind(null, data)}
 			/>
 		);
 	});

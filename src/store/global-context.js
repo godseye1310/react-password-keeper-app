@@ -5,8 +5,11 @@ const globalContext = React.createContext({
 	addPassword: (ItemList) => {},
 	deletePassword: (id) => {},
 	editPassword: (id) => {},
+
 	searchpassword: (search) => {},
 	filteredList: [],
+
+	setData: {},
 	total: 0,
 });
 

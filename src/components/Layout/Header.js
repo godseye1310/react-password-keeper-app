@@ -6,7 +6,7 @@ import globalContext from "../../store/global-context";
 
 const Header = (props) => {
 	const headerCtx = useContext(globalContext);
-	const total = headerCtx.passwords.length;
+	const total = headerCtx.passwordList.length;
 	return (
 		<div className={styles.header}>
 			<div>
