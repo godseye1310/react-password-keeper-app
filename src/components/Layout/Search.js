@@ -1,26 +1,26 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import globalContext from "../../store/global-context";
 
 const Search = () => {
 	const { searchPassword } = useContext(globalContext);
-	// const [searchPW, setSearchPW] = useState("");
+	const [searchPW, setSearchPW] = useState("");
 
 	const handleSearch = (event) => {
-		// setSearchPW(event.target.value);
-		searchPassword(event.target.value);
+		setSearchPW(event.target.value);
+		// searchPassword(event.target.value);
 	};
 
-	// useEffect(() => {
-	// 	console.log("effect running");
+	useEffect(() => {
+		const timeID = setTimeout(() => {
+			// console.log("searching...");
+			searchPassword(searchPW);
+		}, 1000);
 
-	// 	const timeID = setTimeout(() => {
-	// 		searchPassword(searchPW);
-	// 	}, 1000);
-
-	// 	return () => {
-	// 		clearTimeout(timeID);
-	// 	};
-	// }, [searchPW]);
+		return () => {
+			// console.log("clean up");
+			clearTimeout(timeID);
+		};
+	}, [searchPassword, searchPW]);
 
 	return (
 		<div>

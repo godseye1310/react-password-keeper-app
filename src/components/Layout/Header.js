@@ -5,8 +5,8 @@ import Search from "./Search";
 import globalContext from "../../store/global-context";
 
 const Header = (props) => {
-	const headerCtx = useContext(globalContext);
-	const total = headerCtx.passwordList.length;
+	const { total } = useContext(globalContext);
+
 	return (
 		<div className={styles.header}>
 			<div>

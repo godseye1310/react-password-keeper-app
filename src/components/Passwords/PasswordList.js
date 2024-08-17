@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import styles from "./passwordList.module.css";
 import PaswordItem from "./PaswordItem";
 import Card from "../UI/Card";
@@ -27,6 +27,12 @@ const PasswordList = (props) => {
 	} else {
 		displayedList = listCtx.passwordList;
 	}
+
+	const { totalHandle } = listCtx;
+	useEffect(() => {
+		// console.log("effect running");
+		totalHandle(displayedList.length);
+	}, [displayedList.length, totalHandle]);
 
 	const listData = displayedList.map((data) => {
 		return (

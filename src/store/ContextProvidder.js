@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import globalContext from "./global-context";
 
 const ContextProvidder = (props) => {
@@ -36,12 +36,19 @@ const ContextProvidder = (props) => {
 	};
 
 	const [searchText, setSearchText] = useState("");
-	const searchHandler = (search) => {
+	const searchHandler = useCallback((search) => {
+		// console.log(search);
 		setSearchText(search);
-	};
+	}, []);
+
+	const [total, setTotal] = useState(0);
+	const totalHandler = useCallback((length) => {
+		setTotal(length);
+	}, []);
 
 	const globalCtx = {
 		passwordList: passwordList,
+
 		addPassword: addPasswordHandler,
 		deletePassword: deletePasswordHandler,
 		editPassword: editPasswordHandler,
@@ -55,6 +62,9 @@ const ContextProvidder = (props) => {
 			passcode,
 			setPasscode,
 		},
+
+		total: total,
+		totalHandle: totalHandler,
 	};
 
 	return (

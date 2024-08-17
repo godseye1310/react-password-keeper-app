@@ -5,6 +5,8 @@ import AddForm from "./components/AddPassword/AddForm";
 import PasswordList from "./components/Passwords/PasswordList";
 
 function App() {
+	console.log("app running");
+
 	const [formDisplay, setFormDisplay] = useState(false);
 	const formDisplayHandler = () => {
 		setFormDisplay(true);
