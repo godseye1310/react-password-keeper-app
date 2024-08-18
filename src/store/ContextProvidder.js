@@ -46,8 +46,16 @@ const ContextProvidder = (props) => {
 		setTotal(length);
 	}, []);
 
+	const [displayForm, setDisplayForm] = useState(false);
+	const handleFormDisplay = (show) => {
+		setDisplayForm(show);
+	};
+
 	const globalCtx = {
 		passwordList: passwordList,
+
+		formDisplayHandler: handleFormDisplay,
+		onDisplay: displayForm,
 
 		addPassword: addPasswordHandler,
 		deletePassword: deletePasswordHandler,

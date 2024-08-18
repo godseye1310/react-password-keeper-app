@@ -3,6 +3,9 @@ import React from "react";
 const globalContext = React.createContext({
 	passwordList: [],
 
+	formDisplayHandler: (show) => {},
+	onDisplay: false,
+
 	addPassword: (ItemList) => {},
 	deletePassword: (id) => {},
 	editPassword: (edit) => {},

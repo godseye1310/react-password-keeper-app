@@ -4,7 +4,7 @@ import ModalOverlay from "./../UI/ModalOverlay";
 import Button from "../UI/Button";
 import globalContext from "../../store/global-context";
 
-const AddForm = (props) => {
+const AddForm = () => {
 	const formCtx = useContext(globalContext);
 	// const [mytitle, setTitle] = useState("");
 	// const [passcode, setPasscode] = useState("");
@@ -28,12 +28,16 @@ const AddForm = (props) => {
 		formCtx.addPassword(passwordData);
 		setTitle("");
 		setPasscode("");
-		props.onCloseForm();
+		formCtx.formDisplayHandler(false);
 		// console.log(passwordData);
 	};
 
-	return (
-		<ModalOverlay onClose={props.onCloseForm}>
+	const closeForm = () => {
+		formCtx.formDisplayHandler(false);
+	};
+
+	let passwordForm = (
+		<ModalOverlay onClose={closeForm}>
 			<form onSubmit={addPasswordHandler} className={styles.form}>
 				<div>
 					<label htmlFor="title">title :</label>
@@ -56,12 +60,14 @@ const AddForm = (props) => {
 					/>
 				</div>
 				<div>
-					<Button onClick={props.onCloseForm}>X</Button>
+					<Button onClick={closeForm}>X</Button>
 					<Button type="submit">Add </Button>
 				</div>
 			</form>
 		</ModalOverlay>
 	);
+
+	return <>{formCtx.onDisplay && passwordForm};</>;
 };
 
 export default AddForm;

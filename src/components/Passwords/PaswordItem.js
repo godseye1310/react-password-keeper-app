@@ -6,9 +6,6 @@ const PaswordItem = (props) => {
 		props.onDelete(props.id);
 	};
 
-	// const handleEdit = () => {
-	// 	props.onEdit(props.id);
-	// };
 	return (
 		<>
 			<li>

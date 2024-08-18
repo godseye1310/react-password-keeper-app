@@ -4,8 +4,11 @@ import Button from "../UI/Button";
 import Search from "./Search";
 import globalContext from "../../store/global-context";
 
-const Header = (props) => {
-	const { total } = useContext(globalContext);
+const Header = () => {
+	const { total, formDisplayHandler } = useContext(globalContext);
+	const showForm = () => {
+		formDisplayHandler(true);
+	};
 
 	return (
 		<div className={styles.header}>
@@ -13,7 +16,7 @@ const Header = (props) => {
 				<h1>Passwork Keeper</h1>
 				<h3>Total Password : {total}</h3>
 			</div>
-			<Button onClick={props.onDisplayForm}>Add New Password</Button>
+			<Button onClick={showForm}>Add New Password</Button>
 			<Search />
 		</div>
 	);

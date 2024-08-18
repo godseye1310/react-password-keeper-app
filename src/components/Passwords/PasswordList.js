@@ -4,10 +4,8 @@ import PaswordItem from "./PaswordItem";
 import Card from "../UI/Card";
 import globalContext from "../../store/global-context";
 
-const PasswordList = (props) => {
+const PasswordList = () => {
 	const listCtx = useContext(globalContext);
-	// console.log(listCtx.passwordList);
-	// console.log(listCtx.filteredList);
 
 	const deleteHandler = (id) => {
 		listCtx.deletePassword(id);
@@ -15,7 +13,7 @@ const PasswordList = (props) => {
 
 	const editHandler = (edit) => {
 		listCtx.editPassword(edit);
-		props.onShowForm();
+		listCtx.formDisplayHandler(true);
 	};
 
 	const { searchKey } = listCtx;
